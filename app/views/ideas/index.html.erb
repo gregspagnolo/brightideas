@@ -7,9 +7,18 @@
 <div class="ideas">
 	<% @ideas.sort_by { |idea| idea.likes.size }.reverse.each do |i| %>
 				<p><a href="/users/<%= i.user.id %>"><%= i.user.alias %></a> says: <%= i.content %></p>
-				<button class="btn btn-primary btn-sm"><a href="/likes/<%= i.id %>">Like</button>
+			<form action="/likes" method="post">
+				<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+				<button type="submit" btn-primary btn-sm">Like</button>
+				<input type="hidden" name="idea_id" value="<%= i.id %>">
+			</form>
 			<% if current_user.id == i.user_id %>
-				<div class="btn btn-danger btn-sm"><a href="/destroy/<%= i.id %>">Delete</a></div>
+				<form action="/ideas/" method="post">
+					<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+					<input type='hidden' name='_method' value='delete'>
+					<input type='hidden' name='idea_id' value="<%= i.id %>">
+					<input type='submit' value='Delete'>
+				</form>
 			<% end %>
 			<p class="likes_count"><a href="/ideas/<%= i.id %>"><%= pluralize(i.likes.count, 'person') %> liked this</a></p>
 	<% end %>

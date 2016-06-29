@@ -15,7 +15,14 @@
  */
 
 .header {
+	display: inline-block;
+	width: 300px;
 	float: right;
+	
+}
+
+.header input[type=submit] {
+	display: inline-block;
 }
 
 body {
@@ -26,23 +33,15 @@ body {
 	padding-bottom: 50px;
 }
 
-a {
-	text-decoration: none;
-	font-color: white;
-}
 
 
 .ideas {
 	padding-top: 25px;
 }
 
-.ideas button {
-	background-color: red;
-}
-
 .ideas .likes_count {
 	width: 300px;
-	padding-left: 20px;
+	padding-left: 60px;
 	margin-bottom: 10px;
 	display: inline-block;
 }

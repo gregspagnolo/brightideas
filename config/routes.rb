@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   get '/ideas' => 'ideas#index'
   post '/ideas' => 'ideas#create'
   get '/ideas/:id' => 'ideas#show'
-  get '/destroy/:id' => 'ideas#destroy'
+  delete '/ideas' => 'ideas#destroy'
 
-  get '/likes/:id' => 'likes#create'
+  post '/likes' => 'likes#create'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

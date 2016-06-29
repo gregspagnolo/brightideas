@@ -1,6 +1,5 @@
 class IdeasController < ApplicationController
 	before_action :require_login, only: [:index, :create, :destroy]
-	
 
 	def index
 		@ideas = Idea.all
@@ -23,7 +22,7 @@ class IdeasController < ApplicationController
 	end
 
 	def destroy
-		Idea.find(params[:id]).destroy
+		Idea.find(params[:idea_id]).destroy
 		redirect_to :back
 		flash[:success] = ["Your bright idea has been deleted"]
 	end
