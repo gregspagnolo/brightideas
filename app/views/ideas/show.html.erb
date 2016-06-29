@@ -1,0 +1,17 @@
+<a href="/users/<%= @idea.user.id %>"><%= @idea.user.alias %></a> says: <%= @idea.content %>
+<h4>People who liked this post:</h4>
+<table class="hey table table-condensed">
+	<tr>
+		<th>Alias</th>
+		<th>Name</th>
+	</tr>
+		<% @likes.select("DISTINCT(user_id)").each do |l| %>
+		<tr>
+			<td><a href="/users/<%= l.user_id %>"><%= l.user.alias %></a></td>
+			<td><%= l.user.name.capitalize %></td>
+		</tr>
+
+			
+		
+			<% end %>
+</table>

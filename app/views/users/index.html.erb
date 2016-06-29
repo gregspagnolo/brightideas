@@ -1,0 +1,28 @@
+<h4>Welcome!</h4>
+	<form action="/users/" method="post">
+		<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+		<div class="row">
+			<div class="col-md-6">
+			<legend>Register:</legend>
+				<p>Name: <input type="text" class="form-control" name="user[name]"></p>
+				<p>Alias: <input type="text" class="form-control" name="user[alias]"></p>
+				<p>Email: <input type="email" class="form-control" name="user[email]"></p>
+				<p>Password: <input type="password" class="form-control" name="user[password]"></p>
+				<p>Password must be at least 8 characters</p>
+				<p>Confirm Password: <input type="password" class="form-control" name="user[confirm_password]"></p>
+				<input type="submit" value="Register" class="btn-primary">
+	</form>
+			</div>
+	<form action="/sessions/create" method="post">
+		<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+		<fieldset>
+		<div class="col-md-6">
+			<legend>Login:</legend>
+			<p>Email: <input type="email" class="form-control" name="email"></p>
+			<p>Password: <input type="password" class="form-control" name="password"></p>
+			<input type="submit" value="Login" class="btn-success">
+		</fieldset>
+		</div>
+		</div>
+	</form>
+</div>

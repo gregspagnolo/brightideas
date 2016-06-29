@@ -1,0 +1,16 @@
+<h1>Hi <%= current_user.name.capitalize %>! </h1>
+	<form action="/ideas" method="post">
+		<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+		<textarea name="content" placeholder="Post something witty here" class="content form-control"></textarea>
+		<p class="create"><input type="submit" value="Create Idea" class="btn btn-success"></p>
+	</form>
+<div class="ideas">
+	<% @ideas.sort_by { |idea| idea.likes.size }.reverse.each do |i| %>
+				<p><a href="/users/<%= i.user.id %>"><%= i.user.alias %></a> says: <%= i.content %></p>
+				<button class="btn btn-primary btn-sm"><a href="/likes/<%= i.id %>">Like</button>
+			<% if current_user.id == i.user_id %>
+				<div class="btn btn-danger btn-sm"><a href="/destroy/<%= i.id %>">Delete</a></div>
+			<% end %>
+			<p class="likes_count"><a href="/ideas/<%= i.id %>"><%= pluralize(i.likes.count, 'person') %> liked this</a></p>
+	<% end %>
+</div>
